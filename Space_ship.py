@@ -57,14 +57,13 @@ def start_screen():
         clock.tick(FPS)
 
 
-class ship(pygame.sprite.Sprite):
+class Ship(pygame.sprite.Sprite):
     image = load_image("ship.png", -1)
-
 
     def __init__(self, group):
         super().__init__(group)
         print(11111)
-        self.image = ship.image
+        self.image = Ship.image
         self.rect = self.image.get_rect()
         self.rect.x = width//2
         self.rect.y = height//2
@@ -80,8 +79,10 @@ class ship(pygame.sprite.Sprite):
         if args and key[pygame.K_RIGHT] and self.rect.x + 10 <= width - 280:
             self.rect.x += 10
 
-
 all_sprites = pygame.sprite.Group()
+Player = pygame.sprite.Group()
+player = Ship(Player)
+
 start_screen()
 running = True
 while running:
@@ -90,11 +91,11 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
-            all_sprites.update(event)
+            Player.update(event)
 
     screen.fill(pygame.Color(0, 0, 0))
-    all_sprites.draw(screen)
-    all_sprites.update()
+    Player.draw(screen)
+    #Player.update()
     pygame.display.flip()
     #clock.tick(1000)
 
