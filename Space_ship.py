@@ -166,6 +166,7 @@ class Enemy_left(pygame.sprite.Sprite):
         self.rect.y = coords_y
         self.hp = 1
 
+
     def update(self):
         y = self.rect[1]
         global choos, x_enemy, y_enemy
